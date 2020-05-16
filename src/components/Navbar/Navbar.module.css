@@ -2,16 +2,30 @@
     grid-area: nav;
     background-color: darkorange;
 }
-
-.item {
-    color: aqua;
+.button {
+    text-align: center;
+    margin-bottom: 10px;
+    background-color: green;
+    border-radius: 20%;
+}
+.button:last-child {
+    margin-bottom: 0;
+}
+.button:first-child {
+    margin-top: 30px;
 }
 
-
-.green {
-    color: green;
+.button_link {
+    text-decoration: none;
+    color: black;
+    font-family: 'Balsamiq Sans', cursive;
+    font-size: 20px;
+    letter-spacing: 3px;
+}
+.button_link:hover {
+    color: white;
 }
 
-.under {
-    text-decoration: underline;
+.active {
+    color: gold;
 }

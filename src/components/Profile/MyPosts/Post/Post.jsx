@@ -9,8 +9,10 @@ const Post = (props) => {
     return(
     <div className={s.item}>
         <img src="https://www.trendsmap.com/ipx/https://pbs.twimg.com/profile_images/926488420645523456/hwKSfqNj.jpg" alt="avatar"/>
-        <p>post 1</p>
+        post 1
         {props.message}
+        <div className={s.like}>Like: <span>{props.like}</span></div>
+        
     </div>
     )
 }

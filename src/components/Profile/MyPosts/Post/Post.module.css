@@ -6,3 +6,12 @@
     width: 100px;
     border-radius: 50%;
 }
+
+.like {
+    font-size: 38px;
+    font-family: 'Balsamiq Sans', cursive;
+}
+
+.like span {
+    color: red;
+}
