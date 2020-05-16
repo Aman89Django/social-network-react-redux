@@ -10,7 +10,7 @@ const Navbar = () => {
         <div className={s.item}>
             <a>Messages</a>
         </div>
-        <div className="item">
+        <div className={`${s.item} ${s.under}`}>
             <a>News</a>
         </div>
         <div className="item">

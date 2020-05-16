@@ -6,3 +6,12 @@
 .item {
     color: aqua;
 }
+
+
+.green {
+    color: green;
+}
+
+.under {
+    text-decoration: underline;
+}
