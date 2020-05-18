@@ -1,0 +1,7 @@
+.main_background img{
+    width: 800px;
+    margin: 10px auto;
+    display: flex;
+    border-radius: 5%;
+    opacity: 0.7;
+}
