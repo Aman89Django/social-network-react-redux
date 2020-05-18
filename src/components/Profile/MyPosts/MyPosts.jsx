@@ -4,6 +4,17 @@ import Post from "./Post/Post";
 
 
 const MyPosts = () => {
+
+
+    const postsData = [
+        {id: 1, post: "Hi! how are you?", likesCount: 12},
+        {id: 2, post: "It's my first post!", likesCount: 7},
+        {id: 3, post: "It's awesome!", likesCount:25 },
+    ];
+
+    const postElements = postsData.map(p => <Post like={p.likesCount} message={p.post}/>);
+
+
     return(
     <div>
         <div className={s.postsBlock}>
@@ -17,8 +28,7 @@ const MyPosts = () => {
         </div>
 
         <div className={s.posts}>
-            <Post like="5" message="Hi, how are you?" />
-            <Post like="7" message="It's my first post" />
+            {postElements}
         </div>
 
     </div>
