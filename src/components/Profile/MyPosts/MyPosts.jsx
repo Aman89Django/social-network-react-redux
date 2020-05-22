@@ -3,13 +3,18 @@ import s from './MyPosts.module.css';
 import Post from "./Post/Post";
 import {postsData} from '../../../index'
 
+<<<<<<< HEAD
 const MyPosts = () => {
 
 console.log(postsData.post);
 
 
     const postElements = postsData.map(p => <Post like={p.likesCount} message={p.post}/>);
+=======
+const MyPosts = (props) => {
+>>>>>>> right_way
 
+    const postElements = props.postsData.map(p => <Post like={p.likesCount} message={p.post}/>);
 
     return(
     <div>
