@@ -4,13 +4,8 @@ import ProfileInfo from "./ProfileInfo/ProfileInfo";
 
 
 
-<<<<<<< HEAD
-const Profile = () => {
 
-
-=======
 const Profile = (props) => {
->>>>>>> right_way
     return(
     <div>
         <ProfileInfo />
