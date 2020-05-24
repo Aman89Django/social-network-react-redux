@@ -1,15 +1,13 @@
 import React from 'react';
 import s from './MyPosts.module.css';
 import Post from "./Post/Post";
-import {postsData} from '../../../index'
 
 
 
 
 const MyPosts = (props) => {
 
-
-    const postElements = props.postsData.map(p => <Post like={p.likesCount} message={p.post}/>);
+    const postElements = props.posts.map(p => <Post like={p.likesCount} message={p.post}/>);
 
     return(
     <div>
