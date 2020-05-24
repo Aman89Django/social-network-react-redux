@@ -4,14 +4,14 @@ let state = {
         {id: 2, post: "It's my first post!", likesCount: 7},
         {id: 3, post: "It's awesome!", likesCount: 25},
     ],
-    dialogs: [
+    messages: [
         {id: 1, message: "Hi!"},
         {id: 2, message: "Hello there!"},
         {id: 3, message: "How are you?"},
         {id: 4, message: "Yo!"},
         {id: 5, message: "Everything cools!"},
     ],
-    messages: [
+    dialogs: [
         {id: 1, name: "Aman"},
         {id: 2, name: "Aigerim"},
         {id: 3, name: "Sultan"},
