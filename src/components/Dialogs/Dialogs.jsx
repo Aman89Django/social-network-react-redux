@@ -16,7 +16,10 @@ const newMesElement = React.createRef();
 
     const addMes = () => {
         const text = newMesElement.current.value;
-        alert(text);
+        props.addMessage(text);
+        newMesElement.current.value = '';
+
+
     };
     return (
 
