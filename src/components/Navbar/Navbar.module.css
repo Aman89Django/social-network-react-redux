@@ -1,3 +1,7 @@
+:root {
+    --green-bg:green;
+}
+
 .nav {
     grid-area: nav;
     background-color: darkorange;
@@ -5,7 +9,7 @@
 .button {
     text-align: center;
     margin-bottom: 10px;
-    background-color: green;
+    background-color: var(--green-bg);
     border-radius: 20%;
 }
 .button:last-child {

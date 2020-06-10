@@ -1,4 +1,4 @@
-import {rerenderEntireTree} from "../render";
+let rerenderEntireTree;
 
 let state = {
     profilePage: {
@@ -56,6 +56,11 @@ export let addMessage = (newMessage) => {
     state.messagesPage.messages.push(newMes);
     rerenderEntireTree(state);
 };
+
+export const subscribe = (observer) =>{
+    rerenderEntireTree = observer;
+};
+
 
 
 export default state;
