@@ -5,7 +5,7 @@ import Message from "./Message/Message";
 
 
 const Dialogs = (props) => {
-
+    debugger;
 
     const dialogsElements = props.dialogs.map(d => <DialogItem name={d.name} id={d.id} img={d.img}/>);
 
@@ -16,11 +16,12 @@ const newMesElement = React.createRef();
 
     const addMes = () => {
         const text = newMesElement.current.value;
-        props.addMessage(text);
+        // props.addMessage(text);
+        props.dispatch({type:'ADD-MESSAGE', newMessage:text});
         newMesElement.current.value = '';
 
 
-    };
+    };debugger;
     return (
 
         <div className={s.dialogs}>
