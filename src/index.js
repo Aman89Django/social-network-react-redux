@@ -5,28 +5,31 @@ import './index.css';
 import App from './App';
 import store from "./redux/redux-store";
 import {BrowserRouter} from "react-router-dom";
+import {Provider} from "./StoreContext";
 
 export let rerenderEntireTree = (state) => {
     ReactDOM.render(
         <BrowserRouter>
-            <App state={state}
-                 dispatch = {store.dispatch.bind(store)}
-                 store = { store }
-                 // addPost={store.addPost.bind(store)}
-                 // updateNewPostText={store.updateNewPostText.bind(store)}
-                 // addMessage={store.addMessage.bind(store)}
-            />
+            <Provider store={store}>
+                <App
+                    // state={state}
+                    // dispatch = {store.dispatch.bind(store)}
+                    // store = { store }
+                    // addPost={store.addPost.bind(store)}
+                    // updateNewPostText={store.updateNewPostText.bind(store)}
+                    // addMessage={store.addMessage.bind(store)}
+                />
+            </Provider>
         </BrowserRouter>,
         document.getElementById('root')
     );
 };
 
 rerenderEntireTree(store.getState());
-store.subscribe( () => {
+store.subscribe(() => {
     let state = store.getState();
     rerenderEntireTree(state);
 });
-
 
 
 serviceWorker.unregister();
