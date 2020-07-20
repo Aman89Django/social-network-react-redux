@@ -5,9 +5,9 @@ import './index.css';
 import App from './App';
 import store from "./redux/redux-store";
 import {BrowserRouter} from "react-router-dom";
-import {Provider} from "./StoreContext";
+import {Provider} from "react-redux";
 
-export let rerenderEntireTree = (state) => {
+export let rerenderEntireTree = () => {
     ReactDOM.render(
         <BrowserRouter>
             <Provider store={store}>
@@ -25,11 +25,17 @@ export let rerenderEntireTree = (state) => {
     );
 };
 
-rerenderEntireTree(store.getState());
+rerenderEntireTree();
 store.subscribe(() => {
-    let state = store.getState();
-    rerenderEntireTree(state);
+    rerenderEntireTree();
 });
+
+// rerenderEntireTree(store.getState());
+// store.subscribe(() => {
+//     let state = store.getState();
+//     rerenderEntireTree(state);
+// });
+
 
 
 serviceWorker.unregister();
