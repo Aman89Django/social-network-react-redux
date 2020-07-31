@@ -7,20 +7,26 @@ import userAvatar from '../../assets/images/avatar_user.png';
 
 
 class Users extends React.Component {
-    constructor(props) {
-        super(props);
-        axios.get('https://social-network.samuraijs.com/api/1.0/users')
-            .then(response => {
-                this.props.setUsers(response.data.items);
-            })
-            .catch(error =>{
-                console.error(error);
-            });
+
+
+    getUsers = () =>{
+        if(this.props.users.length ===0 ) {
+
+            axios.get('https://social-network.samuraijs.com/api/1.0/users')
+                .then(response => {
+                    this.props.setUsers(response.data.items);
+                })
+                .catch(error =>{
+                    console.error(error);
+                });
+        };
     };
 
 
     render() {
         return <div>
+            <Button onClick={this.getUsers} variant={"contained"} >Get Users </Button>
+
             {
                 this.props.users.map(u => <div key={u.id} className={s.mainBlock}>
                 <span className={s.leftBlock}>
@@ -32,7 +38,7 @@ class Users extends React.Component {
                            ? <Button variant={"contained"} color={"secondary"} onClick={() => {
                                this.props.unfollow(u.id)}}>Unfollow</Button>
                            : <Button variant={"contained"} color={"primary"} onClick={() => {
-                               this.props.follow(u.id)}}>Follow</Button>}
+                               props.follow(u.id)}}>Follow</Button>}
                     </div>
                 </span>
                     <span className={s.rightBlock}>
@@ -46,10 +52,11 @@ class Users extends React.Component {
                         {/*</span>*/}
                 </span>
                 </div>)
+
             }
         </div>
     }
-};
+}
 
 
 export default Users;
