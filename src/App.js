@@ -16,9 +16,7 @@ const App = () => {
         <BrowserRouter>
             <div className='app-wrapper'>
                 <Header/>
-
                 <Navbar/>
-
                 <div className="app-wrapper-content">
 
                     <Route path='/profile'
@@ -31,8 +29,6 @@ const App = () => {
                            render = {() => <UsersContainer />}
                     />
                 </div>
-
-
             </div>
         </BrowserRouter>
     );
