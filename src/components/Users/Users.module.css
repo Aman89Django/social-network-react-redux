@@ -7,3 +7,12 @@
     margin-bottom: 20px;
     margin-left: 50px;
 }
+
+.selectedPage {
+    font-weight: bold;
+    font-size: 25px;
+}
+
+.cursor {
+    cursor: pointer;
+}

@@ -20,17 +20,7 @@ const Dialogs = (props) => {
         props.updateNewMessageBody(body);
     };
 
-
-// const newMesElement = React.createRef();
-//     const addMes = () => {
-//         const text = newMesElement.current.value;
-//         // props.addMessage(text);
-//         props.dispatch({type:'ADD-MESSAGE', newMessage:text});
-//         newMesElement.current.value = '';
-//     };
-
     return (
-
         <div className={s.dialogs}>
             <div className={s.dialogsItems}>
                 {dialogsElements}
@@ -48,7 +38,6 @@ const Dialogs = (props) => {
             </div>
 
         </div>
-
     )
 };
 
