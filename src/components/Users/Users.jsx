@@ -3,6 +3,7 @@ import s from './Users.module.css';
 import Button from '@material-ui/core/Button';
 import userAvatar from '../../assets/images/avatar_user.png';
 
+
 const Users = props => {
 
     let pagesCount = Math.ceil(props.totalUsersCount / props.pageSize);
@@ -52,7 +53,6 @@ const Users = props => {
                 </div>)
             }
         </div>
-
     )
 };
 
