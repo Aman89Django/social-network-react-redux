@@ -2,6 +2,7 @@ import React from 'react';
 import s from './Users.module.css';
 import Button from '@material-ui/core/Button';
 import userAvatar from '../../assets/images/avatar_user.png';
+import {NavLink} from "react-router-dom";
 
 
 const Users = props => {
@@ -28,8 +29,10 @@ const Users = props => {
                 props.users.map(u => <div key={u.id} className={s.mainBlock}>
                 <span className={s.leftBlock}>
                     <div>
-                        <img src={u.photos.small != null ? u.photos.small : userAvatar} className={s.photo}/>
-                    </div>
+                        <NavLink to={'/profile/' + u.id}>
+                            <img src={u.photos.small != null ? u.photos.small : userAvatar} className={s.photo}/>
+                        </NavLink>
+                        </div>
                     <div>
                        {u.followed
                            ? <Button variant={"contained"} color={"secondary"} onClick={() => {

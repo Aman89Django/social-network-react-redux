@@ -9,7 +9,6 @@ import {
     unfollow
 } from "../../redux/users-reducer";
 import * as axios from "axios";
-import preloader from '../../assets/images/preloader.gif';
 import PreLoader from "../Common/Preloader/PreLoader";
 
 
@@ -55,15 +54,14 @@ class UsersContainer extends React.Component {
     }
 };
 
-let mapStateToProps = state => {
-    return {
+let mapStateToProps = state => ({
         users: state.usersPage.users,
         pageSize: state.usersPage.pageSize,
         totalUsersCount: state.usersPage.totalUsersCount,
         currentPage: state.usersPage.currentPage,
         isFetching: state.usersPage.isFetching,
-    }
-};
+
+});
 
 // let mapDispatchToProps = dispatch => {
 //     return {
@@ -89,4 +87,6 @@ let mapStateToProps = state => {
 // }
 
 
-export default UsersContainer = connect(mapStateToProps, {follow, unfollow, setUsers, setCurrentPage, setTotalUsersCount, toggleIsFetching})(UsersContainer);
+export default connect(mapStateToProps, {follow,
+    unfollow, setUsers, setCurrentPage, setTotalUsersCount,
+    toggleIsFetching})(UsersContainer);
