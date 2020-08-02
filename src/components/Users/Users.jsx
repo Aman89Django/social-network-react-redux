@@ -2,7 +2,8 @@ import React from 'react';
 import s from './Users.module.css';
 import Button from '@material-ui/core/Button';
 import userAvatar from '../../assets/images/avatar_user.png';
-import {NavLink} from "react-router-dom";
+import {NavLink} from 'react-router-dom';
+import * as axios from 'axios';
 
 
 const Users = props => {
@@ -36,11 +37,34 @@ const Users = props => {
                     <div>
                        {u.followed
                            ? <Button variant={"contained"} color={"secondary"} onClick={() => {
-                               props.unfollow(u.id)
+
+
+                               axios.delete(`https://social-network.samuraijs.com/api/1.0/follow/${u.id}`, {
+                                   withCredentials: true,
+                                   headers: {'API-KEY': 'aa33f5b6-69e4-42b5-b997-581073e89c4b'}
+                               })
+                                   .then(response => {
+                                       if (response.data.resultCode === 0) {
+                                           props.unfollow(u.id);
+                                       }
+                                   })
+                               ;
+
+
                            }}>Unfollow</Button>
                            : <Button variant={"contained"} color={"primary"} onClick={() => {
-                               props.follow(u.id)
-                           }}>Follow</Button>}
+                               axios.post(`https://social-network.samuraijs.com/api/1.0/follow/${u.id}`, {}, {
+                                   withCredentials: true,
+                                   headers: {'API-KEY': 'aa33f5b6-69e4-42b5-b997-581073e89c4b'}
+                               })
+                                   .then(response => {
+                                       if (response.data.resultCode === 0) {
+                                           props.follow(u.id);
+                                       }
+                                   });
+
+                           }}>Follow</Button>
+                       }
                     </div>
                 </span>
                     <span className={s.rightBlock}>
