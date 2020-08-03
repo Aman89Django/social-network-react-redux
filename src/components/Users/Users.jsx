@@ -3,7 +3,7 @@ import s from './Users.module.css';
 import Button from '@material-ui/core/Button';
 import userAvatar from '../../assets/images/avatar_user.png';
 import {NavLink} from 'react-router-dom';
-import * as axios from 'axios';
+import {usersAPI} from "../../api/api";
 
 
 const Users = props => {
@@ -36,24 +36,29 @@ const Users = props => {
                         </div>
                     <div>
                        {u.followed
-                           ? <Button variant={"contained"} color={"secondary"} onClick={() => {
-                               axios.delete(`https://social-network.samuraijs.com/api/1.0/follow/${u.id}`, {withCredentials: true,
-                                   headers: {'API-KEY': 'aa33f5b6-69e4-42b5-b997-581073e89c4b'}})
-                                   .then(response => {
-                                       if (response.data.resultCode === 0) {
+                           // FOLLOW
+                           ? <Button disabled={props.followingInProgress.some(id => id ===u.id)} variant={"contained"} color={"secondary"} onClick={() => {
+                               props.toggleIsFollowingInProgress(true, u.id);
+                               usersAPI.unfollowUsers(u.id)
+                                   .then(data => {
+                                       if (data.resultCode === 0) {
                                            props.unfollow(u.id);
                                        }
+                                       {props.toggleIsFollowingInProgress(false, u.id)}
                                    });
 
 
                            }}>Unfollow</Button>
-                           : <Button variant={"contained"} color={"primary"} onClick={() => {
-                               axios.post(`https://social-network.samuraijs.com/api/1.0/follow/${u.id}`,null, {withCredentials: true,
-                                   headers: {'API-KEY': 'aa33f5b6-69e4-42b5-b997-581073e89c4b'}})
-                                   .then(response => {
-                                       if (response.data.resultCode === 0) {
+
+                           // UNFOLLOW
+                           : <Button disabled={props.followingInProgress.some(id => id ===u.id)} variant={"contained"} color={"primary"} onClick={() => {
+                               props.toggleIsFollowingInProgress(true, u.id);
+                               usersAPI.followUsers(u.id)
+                                   .then(data=> {
+                                       if (data.resultCode === 0) {
                                            props.follow(u.id);
                                        }
+                                       {props.toggleIsFollowingInProgress(false, u.id)}
                                    });
 
                            }}>Follow</Button>
