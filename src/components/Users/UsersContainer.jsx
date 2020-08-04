@@ -9,7 +9,6 @@ import {
     unfollow, getUsers,
 } from "../../redux/users-reducer";
 import PreLoader from "../Common/Preloader/PreLoader";
-import {usersAPI} from "../../api/api";
 
 
 class UsersContainer extends React.Component {
@@ -92,5 +91,4 @@ let mapStateToProps = state => ({
 
 
 export default connect(mapStateToProps, {follow,
-    unfollow, setUsers, setCurrentPage, setTotalUsersCount,
-    toggleIsFetching, toggleIsFollowingInProgress, getUsers})(UsersContainer);
+    unfollow, toggleIsFollowingInProgress, getUsers})(UsersContainer);
