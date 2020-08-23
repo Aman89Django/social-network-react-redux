@@ -1,14 +1,18 @@
 import React from 'react';
 import {Field, reduxForm} from "redux-form";
 import Button from "@material-ui/core/Button";
+import {Input} from "../Common/FormsControls/FormsControls";
+import {required, maxLengthCreator} from "../../utils/validators/validators";
+
+const maxlength20 = maxLengthCreator(20)
 
 
 const LoginForm = (props) =>{
     return (
             <form onSubmit={props.handleSubmit}>
-                <div><Field  placeholder={"Login"} name={"Login"} component={"input"}/></div>
-                <div><Field  placeholder={"password"} name={"Password"} component={"input"}/></div>
-                <div><Field  component={"input"} type={"checkbox"} name={"Remember me"} />Remember me </div>
+                <div><Field validate={[required, maxlength20]} placeholder={"Login"} name={"Login"} component={Input}/></div>
+                <div><Field validate={[required, maxlength20]} placeholder={"password"} name={"Password"} component={Input}/></div>
+                <div><Field validate={[required, maxlength20]} component={Input} type={"checkbox"} name={"Remember me"} />Remember me </div>
                 <div>
                     <button>Login</button>
                 </div>
