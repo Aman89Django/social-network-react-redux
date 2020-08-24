@@ -6,6 +6,7 @@ import {required, maxLengthCreator} from "../../utils/validators/validators";
 import {connect} from "react-redux";
 import {login} from "../../redux/auth-reducer";
 import {Redirect} from "react-router-dom";
+import style from './Login.module.css';
 
 const maxlength20 = maxLengthCreator(20)
 
@@ -15,7 +16,8 @@ const LoginForm = (props) =>{
             <form onSubmit={props.handleSubmit}>
                 <div><Field validate={[required, maxlength20]} placeholder={"Email"} name={"email"} component={Input}/></div>
                 <div><Field validate={[required, maxlength20]} placeholder={"Password"} name={"password"} component={Input} type={"password"}/></div>
-                <div><Field validate={[required, maxlength20]} component={Input} type={"checkbox"} name={"rememberMe"} />Remember me </div>
+                <div><Field component={Input} type={"checkbox"} name={"rememberMe"} />Remember me </div>
+                <div className={style.formSummaryError}>{props.error}</div>
                 <div>
                     <button>Login</button>
                 </div>
@@ -42,7 +44,7 @@ const Login =props =>{
 };
 const mapStateToProps = (state) =>({
     isAuth: state.auth.isAuth
-})
+});
 
 export default connect(mapStateToProps, {login})(Login);
 
