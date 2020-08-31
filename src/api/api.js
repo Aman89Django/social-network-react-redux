@@ -7,13 +7,27 @@ const instance = axios.create({
 });
 
 // for get users list (usersContainer.jsx)
+
+
+// export const usersAPI = {
+//     async getUsers(currentPage = 1, pageSize = 10) {
+//         try {
+//             const response =await fetch(instance.get(`users?page=${currentPage}&count=${pageSize}`))
+//            return  response => {
+//                 return response.data
+//             }
+//         } catch(e){
+//             console.error(e)
+//         }
+//     },
+
 export const usersAPI = {
-    getUsers(currentPage = 1, pageSize = 10) {
-        return instance.get(`users?page=${currentPage}&count=${pageSize}`)
-            .then(response => {
-                return response.data
-            })
-    },
+getUsers(currentPage = 1, pageSize = 10) {
+    return instance.get(`users?page=${currentPage}&count=${pageSize}`)
+        .then(response => {
+            return response.data
+        })
+},
 // for follow Users (Users.jsx)
     followUsers(id) {
         return instance.post(`follow/${id}`)
@@ -22,7 +36,7 @@ export const usersAPI = {
             })
     },
 
-// for unfollow Users (Users.jsx)
+// for unfolloww Users (Users.jsx)
     unfollowUsers(id) {
         return instance.delete(`follow/${id}`)
             .then(response =>{

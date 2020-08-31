@@ -20,7 +20,8 @@ import {
 class UsersContainer extends React.Component {
 
     componentDidMount() {
-        this.props.requestUsers(this.props.currentPage, this.props.pageSize);
+        const {currentPage, pageSize} = this.props;
+            this.props.requestUsers(currentPage, pageSize);
         // this.props.toggleIsFetching(true);
         // usersAPI.requestUsers()
         //     .then(data => {
@@ -87,7 +88,7 @@ let mapStateToProps = state => ({
 //         follow: userId => {
 //             dispatch(followAC(userId));
 //         },
-//         unfollow: userId => {
+//         unfolloww: userId => {
 //             dispatch(unfollowAC(userId));
 //         },
 //         setUsers: users => {
