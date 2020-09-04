@@ -1,9 +1,17 @@
 .selectedPage {
     font-weight: bold;
-    font-size: 25px;
+    font-size: 20px;
 }
 
-.cursor {
+.main {
+    display: flex;
     cursor: pointer;
+    justify-content: center;
+    align-items: center;
+    margin-top: 10px;
+}
+
+.pageNumber {
+    margin: 0 10px;
 }
 
