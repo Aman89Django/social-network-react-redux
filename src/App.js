@@ -8,9 +8,10 @@ import ProfileContainer from "./components/Profile/ProfileContainer";
 import HeaderContainer from "./components/Header/HeaderContainer";
 import LoginPage from "./components/Login/Login";
 import {compose} from "redux";
-import {connect} from "react-redux";
+import {connect, Provider} from "react-redux";
 import {initializeApp} from './redux/app-reducer'
 import PreLoader from "./components/Common/Preloader/PreLoader";
+import store from "./redux/redux-store";
 
 
 class App extends Component {
@@ -54,4 +55,13 @@ const mapStateToProps = state => ({
     initialized: state.app.initialized,
 });
 
-export default compose(withRouter, connect(mapStateToProps, {initializeApp}))(App);
+const AppContainer = compose(withRouter, connect(mapStateToProps, {initializeApp}))(App);
+
+const SocialApp = props =>{
+    return <BrowserRouter>
+    <Provider store={store}>
+        <AppContainer />
+    </Provider>
+</BrowserRouter>};
+
+export default SocialApp;
