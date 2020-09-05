@@ -15,6 +15,7 @@ const ProfileInfo = ({profile, status, updateStatus}) => {
             </div>
             <div>
                 <img src={profile.photos.large}/>
+
                 <div>About me: {profile.aboutMe}</div>
                 <div>Name: {profile.name}</div>
 
