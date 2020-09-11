@@ -1,7 +1,7 @@
 import React, {Component, Suspense} from 'react';
 import './App.css';
 import Navbar from "./components/Navbar/Navbar";
-import {BrowserRouter, Route, withRouter} from "react-router-dom";
+import {BrowserRouter, HashRouter, Route, withRouter} from "react-router-dom";
 
 import UsersContainer from "./components/Users/UsersContainer";
 
@@ -28,8 +28,8 @@ class App extends Component {
     };
 
     render() {
-        if(!this.props.initialized) {
-            return <PreLoader />
+        if (!this.props.initialized) {
+            return <PreLoader/>
         }
         return (
             <BrowserRouter>
@@ -38,10 +38,10 @@ class App extends Component {
                     <Navbar/>
                     <div className="app-wrapper-content">
                         <Route path='/profile/:userId?'
-                               render={ withSuspense(ProfileContainer) }
+                               render={withSuspense(ProfileContainer)}
                         />
                         <Route path='/dialogs'
-                               render={ withSuspense(DialogsContainer) }
+                               render={withSuspense(DialogsContainer)}
                         />
                         <Route path='/users'
                                render={() => <UsersContainer/>}
@@ -63,11 +63,13 @@ const mapStateToProps = state => ({
 
 const AppContainer = compose(withRouter, connect(mapStateToProps, {initializeApp}))(App);
 
-const SocialApp = props =>{
-    return <BrowserRouter>
-    <Provider store={store}>
-        <AppContainer />
-    </Provider>
-</BrowserRouter>};
+const SocialApp = props => {
+    return <BrowserRouter >
+        {/*<BrowserRouter basename={process.env.PUBLIC_URL}>*/}
+        <Provider store={store}>
+            <AppContainer/>
+        </Provider>
+    </BrowserRouter>
+};
 
 export default SocialApp;
