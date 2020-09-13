@@ -1,4 +1,5 @@
 import {profileAPI, usersAPI} from "../api/api";
+import {stopSubmit} from "redux-form";
 
 const ADD_POST = 'ADD-POST';
 const UPDATE_NEW_POST_TEXT = 'UPDATE-NEW-POST-TEXT';
@@ -91,6 +92,20 @@ export const savePhoto = (file) => async (dispatch) => {
     let data = await profileAPI.savePhoto(file)
     if (data.resultCode === 0) {
         dispatch(savePhotoSuccess(data.data.photos));
+    }
+};
+
+export const saveProfile = (profile) => async (dispatch, getState) => {
+    const userId = getState().auth.userId;
+    let data = await profileAPI.saveProfile(profile);
+    if (data.resultCode === 0) {
+        dispatch(getUserProfile(userId));
+    }
+    else {
+        let messages= data.messages.length >0 ? data.messages[0] : "Some error";
+        dispatch(stopSubmit("edit-profile", {_error: messages}));
+        // dispatch(stopSubmit("edit-profile", {"contacts":{"facebook": messages}}))
+        return Promise.reject(messages);
     }
 };
 
